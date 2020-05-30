@@ -18,31 +18,39 @@
       color: transparent;
     }
     body {
-      background: url("images/bg.png") no-repeat;
-      background-position: top center;
-      background-size: auto 100vh;
       font-family: 'Kosugi Maru', sans-serif;
     }
     header {
-      position: fixed;
       top: 0;
-      font-family: "custom-senobi";
+      display: block;
+      font-family: "custom-senobi", sans-serif;
       line-height: 2rem;
       text-align: center;
       width: 100%;
-      font-size: 2rem;
-      margin-top: 0.5rem;
+      font-size: 1.5rem;
+      margin: 0.5rem auto;
+    }
+    header .header-small {
+      font-size: 1rem;
+    }
+    section#contents {
+      background: url("images/bg.png") no-repeat;
+      background-position: top center;
+      height: 100vh;
+      display: block;
     }
     section#directions {
-      width: 75vh;
-      margin: calc(50vh - 3rem) auto 3rem;
+      width: 30vw;
+      min-width: 18rem;
+      margin: -60vh auto 3rem;
       min-height: 10rem;
       max-height: 40vh;
       overflow-y: scroll;
       background: rgba(255, 255, 255, 80%);
+      display: block;
     }
     section#directions h1 {
-      font-family: "custom-senobi";
+      font-family: "custom-senobi", sans-serif;
       background: linear-gradient(transparent 0%, #42424269 0%);
       margin: .5rem;
     }
@@ -56,18 +64,27 @@
     }
     footer {
       position: fixed;
+      display: block;
       bottom: 0;
       text-align: center;
       width: 100%;
-      font-family: "custom-senobi";
+      font-family: "custom-senobi", sans-serif;
+    }
+    @media screen and (max-width: 500px) {
+    body {
+      background-size: contain;
+      background-position: center center;
     }
 </style>
   </style>
 </head>
 <body>
   <header>
-    路地ラボ（ロジラボ≒Logic Lab）
+    路地ラボ<br>
+    <span class="header-small">(ロジラボ≒Logic Lab)</span>
   </header>
+  <section id="contents">
+  </section>
   <section id="directions">
     <h1 @click="toggle('aboutme')">
       <span v-if="show['aboutme']">▲</span>
@@ -75,9 +92,10 @@
       About me
     </h1>
     <div v-show="show['aboutme']" class="direction">
-      プログラマ。島根県出身。鳥取県在住。フットワークは軽い方。<br>
+      プログラマ。フットワークは軽い方。<br>
       猫と暮らしています。<br>
-      島根県出身、鳥取県在住。<br>インターネット上のIDは主に@sakahukamaki。<br>
+      島根県出身、鳥取県在住。<br>
+      インターネット上のIDは主に@sakahukamaki。<br>
       2014年末からRailsを用いた開発の仕事をしています。<br>
       猫を飼っています。<br>
       業務上詳しいことについては<a href="https://savanna.io/@sakahukamaki" target="_blank">savannna.io</a>もしくは直接ご連絡ください。
@@ -125,7 +143,7 @@
         <li>Facebook: <a href="https://www.facebook.com/sakahukamaki" target="_blank">Asuka Ohtani</a></li>
       </ul>
     </div>
-   </section>
+  </section>
   <footer>
     Illustration by frend(thx!!!)
   </footer>
