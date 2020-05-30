@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>路地ラボ  |  logic-lab</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <style type="text/css">
+    @font-face {
+      font-family: 'custom-senobi';
+      src: url('fonts/custom-senobi.eot') format('eot'), url('fonts/custom-senobi.woff') format('woff');
+    }
+    a {
+      text-decoration: underline;
+      color: black;
+    }
+    a:hover, a:visited {
+      color: transparent;
+    }
+    body {
+      background: url("images/bg.png") no-repeat;
+      background-position: top center;
+      background-size: auto 100vh;
+      font-family: 'Kosugi Maru', sans-serif;
+    }
+    header {
+      position: fixed;
+      top: 0;
+      font-family: "custom-senobi";
+      line-height: 2rem;
+      text-align: center;
+      width: 100%;
+      font-size: 2rem;
+      margin-top: 0.5rem;
+    }
+    section#directions {
+      width: 75vh;
+      margin: calc(50vh - 3rem) auto 3rem;
+      min-height: 10rem;
+      max-height: 40vh;
+      overflow-y: scroll;
+      background: rgba(255, 255, 255, 80%);
+    }
+    section#directions h1 {
+      font-family: "custom-senobi";
+      background: linear-gradient(transparent 0%, #42424269 0%);
+      margin: .5rem;
+    }
+    section#directions div.direction {
+      padding: .5rem 1rem;
+      font-size: 16px;
+      line-height: 20px;
+    }
+    section#directions ul {
+      margin: 0;
+    }
+    footer {
+      position: fixed;
+      bottom: 0;
+      text-align: center;
+      width: 100%;
+      font-family: "custom-senobi";
+    }
+</style>
+  </style>
+</head>
+<body>
+  <header>
+    路地ラボ（ロジラボ≒Logic Lab）
+  </header>
+  <section id="directions">
+    <h1 @click="toggle('aboutme')">
+      <span v-if="show['aboutme']">▲</span>
+      <span v-if="!show['aboutme']">▼</span>
+      About me
+    </h1>
+    <div v-show="show['aboutme']" class="direction">
+      プログラマ。島根県出身。鳥取県在住。フットワークは軽い方。<br>
+      猫と暮らしています。<br>
+      島根県出身、鳥取県在住。<br>インターネット上のIDは主に@sakahukamaki。<br>
+      2014年末からRailsを用いた開発の仕事をしています。<br>
+      猫を飼っています。<br>
+      業務上詳しいことについては<a href="https://savanna.io/@sakahukamaki" target="_blank">savannna.io</a>もしくは直接ご連絡ください。
+    </div>
+    <h1 @click="toggle('works')">
+      <span v-if="show['works']">▲</span>
+      <span v-if="!show['works']">▼</span>
+      Works
+    </h1>
+    <div v-show="show['works']" class="direction">
+      趣味で作ったもの
+      <ul>
+        <li><a href="https://sakahukamaki.github.io/cattower/tools/a3-linkskills.html" target="_blank">A3!リンクスキルチェッカー</a></li>
+        <li><a href="https://origamike.web.fc2.com/" target="_blank">アンソロジー企画サイト</a>（スタジオ五組オリジナルアニメ「刀使ノ巫女」より）</li>
+        <li><a href="https://dzsgnovel.web.fc2.com/" target="_blank">アンソロジー企画サイト</a>（ゲーム「文豪とアルケミスト」より）</li>
+      </ul>
+      <hr>
+      過去のお仕事履歴
+      <ul>
+        <li>`rails new .` からの開発環境整備</li>
+        <li>Rails3.0/Ruby1.8からRails6系/Ruby2.6へのアップデート</li>
+        <li>その他2.0->2.2などのこの範囲に収まるアップデート作業</li>
+        <li>Vagrant, Itamaeなどを用いた開発環境整備</li>
+        <li>社内向けテスト環境整備</li>
+        <li>新人研修（レビューア、メンター）</li>
+        <li>コードレビュー</li>
+        <li>診断結果管理システム（開発）</li>
+        <li>テナント管理システム（開発・追加実装）</li>
+        <li>応対記録システム（詳細設計～保守）</li>
+        <li>料金計算システム</li>
+        <li>決済API開発</li>
+      </ul>
+    </div>
+    <h1 @click="toggle('sns')">
+      <span v-if="show['sns']">▲</span>
+      <span v-if="!show['sns']">▼</span>
+      SNS
+    </h1>
+    <div v-show="show['sns']" class="direction">
+      <ul>
+        <li>Gmail: <a href="mailto:sakahukamaki@gmail.com" target="_blank">sakahukamaki</a></li>
+        <li>twitter: <a href="https://twitter.com/sakahukamaki" target="_blank">@sakahukamaki</a></li>
+        <li>GitHub: <a href="https://github.com/sakahukamaki" target="_blank">@sakahukamaki</a></li>
+        <li>savanna.io: <a href="https://savanna.io/@sakahukamaki" target="_blank">@sakahukamaki</a></li>
+        <li>Facebook: <a href="https://www.facebook.com/sakahukamaki" target="_blank">Asuka Ohtani</a></li>
+      </ul>
+    </div>
+   </section>
+  <footer>
+    Illustration by frend(thx!!!)
+  </footer>
+</body>
+<script type="text/javascript">
+  new Vue({
+    el: '#directions',
+    data: {
+      show: {}
+    },
+    methods:{
+      toggle: function(kind){
+        this.$set(this.show, kind, !this.show[kind])
+      },
+    }
+  })
+
+</script>
+</html>
