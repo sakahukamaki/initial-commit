@@ -1,169 +1,217 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>路地ラボ  |  logic-lab</title>
+  <title>銀盤時計 - 過去の同人誌一覧</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/earlyaccess/hannari.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Sawarabi+Mincho" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-  <style type="text/css">
-    @font-face {
-      font-family: 'custom-senobi';
-      src: url('fonts/custom-senobi.eot') format('eot'), url('fonts/custom-senobi.woff') format('woff');
-    }
-    a {
-      text-decoration: underline;
-      color: black;
-    }
-    a:hover, a:visited {
-      color: transparent;
-    }
-    body {
-      font-family: 'Kosugi Maru', sans-serif;
-    }
-    header {
-      top: 0;
-      display: block;
-      font-family: "custom-senobi", sans-serif;
-      line-height: 2rem;
-      text-align: center;
-      width: 100%;
-      font-size: 1.5rem;
-      margin: 0.5rem auto;
-    }
-    header .header-small {
-      font-size: 1rem;
-    }
-    section#contents {
-      background: url("images/bg.png") no-repeat;
-      background-position: top center;
-      height: 100vh;
-      display: block;
-      z-index: 1;
-    }
-    section#directions {
-      position: relative;
-      top: 15rem;
-      max-width: 25vw;
-      min-width: 18rem;
-      margin: 0 auto;
-      min-height: 10rem;
-      max-height: 18rem;
-      overflow-y: scroll;
-      background: rgba(255, 255, 255, 80%);
-      /*display: block;*/
-    }
-    section#directions h1 {
-      font-family: "custom-senobi", sans-serif;
-      background: linear-gradient(transparent 0%, #42424269 0%);
-      margin: .5rem;
-    }
-    section#directions div.direction {
-      padding: .5rem 1rem;
-      font-size: 16px;
-      line-height: 20px;
-    }
-    section#directions ul {
-      margin: 0;
-    }
-    footer {
-      position: fixed;
-      display: block;
-      bottom: 0;
-      margin-top: 1rem;
-      text-align: center;
-      width: 100%;
-      font-family: "custom-senobi", sans-serif;
-    }
-    @media screen and (max-width: 500px) {
-    body {
-      background-size: contain;
-      background-position: center center;
-    }
-</style>
-  </style>
+  <link rel="stylesheet" type="text/css" href="stylesheets/basic.css">
 </head>
 <body>
   <header>
-    路地ラボ<br>
-    <span class="header-small">(ロジラボ≒Logic Lab)</span>
+    <h1>同人誌一覧</h1>
+    <p>サークル「銀盤時計」が今までに出した本をまとめています。<br>扱いが難しいジャンルについては触れていません。</p>
   </header>
-  <section id="contents">
-    <section id="directions">
-      <h1 @click="toggle('aboutme')">
-        <span v-if="show['aboutme']">▲</span>
-        <span v-if="!show['aboutme']">▼</span>
-        About me
-      </h1>
-      <div v-show="show['aboutme']" class="direction">
-        プログラマ。フットワークは軽い方。<br>
-        猫と暮らしています。<br>
-        島根県出身、鳥取県在住。<br>
-        インターネット上のIDは主に@sakahukamaki。<br>
-        2014年末からRailsを用いた開発の仕事をしています。<br>
-        猫を飼っています。<br>
-        業務上詳しいことについては<a href="https://savanna.io/@sakahukamaki" target="_blank">savannna.io</a>もしくは直接ご連絡ください。
+  <div id="novel-list">
+    <section class="content">
+      <div class="title">What are you doing?</div>
+      <div class="tag">#文或 #おだらん #合同誌</div>
+      <div class="cover">
+        <img src="images/odrn-wad.jpg">
       </div>
-      <h1 @click="toggle('works')">
-        <span v-if="show['works']">▲</span>
-        <span v-if="!show['works']">▼</span>
-        Works
-      </h1>
-      <div v-show="show['works']" class="direction">
-        趣味で作ったもの
-        <ul>
-          <li><a href="https://sakahukamaki.github.io/cattower/tools/a3-linkskills.html" target="_blank">A3!リンクスキルチェッカー</a></li>
-          <li><a href="https://origamike.web.fc2.com/" target="_blank">アンソロジー企画サイト</a>（スタジオ五組オリジナルアニメ「刀使ノ巫女」より）</li>
-          <li><a href="https://dzsgnovel.web.fc2.com/" target="_blank">アンソロジー企画サイト</a>（ゲーム「文豪とアルケミスト」より）</li>
-        </ul>
-        <hr>
-        過去のお仕事履歴
-        <ul>
-          <li>`rails new .` からの開発環境整備</li>
-          <li>Rails3.0/Ruby1.8からRails6系/Ruby2.6へのアップデート</li>
-          <li>その他2.0->2.2などのこの範囲に収まるアップデート作業</li>
-          <li>Vagrant, Itamaeなどを用いた開発環境整備</li>
-          <li>社内向けテスト環境整備</li>
-          <li>新人研修（レビューア、メンター）</li>
-          <li>コードレビュー</li>
-          <li>診断結果管理システム（開発）</li>
-          <li>テナント管理システム（開発・追加実装）</li>
-          <li>応対記録システム（詳細設計～保守）</li>
-          <li>料金計算システム</li>
-          <li>決済API開発</li>
-        </ul>
+      <div class="link">
+        <a class="buy" href="https://booth.pm/ja/items/2071979">海底プラネタリウム様@BOOTH</a>
       </div>
-      <h1 @click="toggle('sns')">
-        <span v-if="show['sns']">▲</span>
-        <span v-if="!show['sns']">▼</span>
-        SNS
-      </h1>
-      <div v-show="show['sns']" class="direction">
-        <ul>
-          <li>Gmail: <a href="mailto:sakahukamaki@gmail.com" target="_blank">sakahukamaki</a></li>
-          <li>twitter: <a href="https://twitter.com/sakahukamaki" target="_blank">@sakahukamaki</a></li>
-          <li>GitHub: <a href="https://github.com/sakahukamaki" target="_blank">@sakahukamaki</a></li>
-          <li>savanna.io: <a href="https://savanna.io/@sakahukamaki" target="_blank">@sakahukamaki</a></li>
-          <li>Facebook: <a href="https://www.facebook.com/sakahukamaki" target="_blank">Asuka Ohtani</a></li>
-        </ul>
+      <div class="etc">
+        詳しくは後書きにある。2020年6月某日発行。
       </div>
     </section>
-  </section>
-  <footer>
-    Illustration by frend(thx!!!)
-  </footer>
-</body>
-<script type="text/javascript">
-  new Vue({
-    el: '#directions',
-    data: {
-      show: {}
-    },
-    methods:{
-      toggle: function(kind){
-        this.$set(this.show, kind, !this.show[kind])
-      },
-    }
-  })
+    <section class="content">
+      <div class="title">心臓の形を教えて</div>
+      <div class="tag">#文或 #だざしが #アンソロ</div>
+      <div class="cover">
+        <img src="images/dzsg-shinzou.jpg">
+      </div>
+      <div class="link">
+        <a class="buy" href="https://kasumi9325.booth.pm/items/2013454">陽炎A*Web支店様@BOOTH</a>
+      </div>
+      <div class="etc">
+        2020年5月31発行<br>
+        桜庭かすみ様のだざしが小説アンソロジーに参加させていただきました。こちらはホームページの方もご協力させていただいています。<br>
+        このアンソロを切欠に、文或の沼にどっぷりとはまることになりました。
+      </div>
+    </section>
+    <section class="content">
+      <div class="title">「ごちそうさま」をきみと</div>
+      <div class="tag">#kmt #おばみつ #短編集</div>
+      <div class="cover">
+        <img src="images/kmt-gokitousama.png">
+      </div>
+      <div class="link">
+        <a class="buy" href="https://benimidori.booth.pm/items/1968305">銀盤時計@BOOTH</a>
+      </div>
+      <div class="etc">
+        2020年5月10日発行……予定だったんですが入稿ミスや印刷ミスで発送が遅れまくった悲しみの本です。内容としては喫茶店巡りをするおばみつが最終的に結婚する話です。
+      </div>
+    </section>
+    <section class="content">
+      <div class="title">転生した親衛隊が飲みサーで駄弁る本</div>
+      <div class="tag">#tjnmk #親衛隊 #短編集</div>
+      <div class="cover">
+        <img src="images/tjnmk-yota.png">
+      </div>
+      <div class="link">
+        <a class="buy" href="https://benimidori.booth.pm/items/1971197">銀盤時計@BOOTH</a>
+      </div>
+      <div class="etc">
+        2020年4月某日発行。この後に出るおばみつ『「ごちそうさま」を君と』を書き上げてハイテンションになったため、以前から温めていた「転生したら年齢逆転してた親衛隊」と「酒を飲む親衛隊」を書きました。
+      </div>
+    </section>
+    <section class="content">
+      <div class="title">Familiar</div>
+      <div class="tag">#wt #諏訪中心 #短編集</div>
+      <div class="cover">
+        <img src="images/wt-suwa.png">
+      </div>
+      <div class="link">
+        <a class="buy" href="https://benimidori.booth.pm/items/1746588">銀盤時計@BOOTH</a>
+      </div>
+      <div class="etc">
+        2020年1月12日発行。2019年の春に突然WT全巻を送りつけられまんまと東さんにハマリ、さあ最新刊を買うぞと表紙を見たら東さんだったときの衝撃は忘れられない。あと「WT全巻送りつけられた結果本を出しました」と首から段ボールを提げたらバズったのが思い出です。
+      </div>
+    </section>
+    <section class="content">
+      <div class="title">やおよろず</div>
+      <div class="tag">#tjnmk #短編集</div>
+      <div class="cover">
+        <img src="images/tjnmk-yaoyorozu.png">
+      </div>
+      <div class="link soldout">
+        売り切れ
+      </div>
+      <div class="etc">
+        C98発行。刀使ノ巫女に関する様々な短編集。
+      </div>
+    </section>
+    <section class="content">
+      <div class="title">早足で駆け抜けて</div>
+      <div class="tag">#tjnmk #短編集 #バッドエンド</div>
+      <div class="cover">
+        <img src="images/tjnmk-hayaashi.png">
+      </div>
+      <div class="link soldout">
+        売り切れ
+      </div>
+      <div class="etc">
+        親衛隊四人のバッドエンドを集めた本です。C98発行。獅童真希は如何にして狂うのか、此花寿々花が狂うのはいつか、皐月夜見は何を見ているのか、燕結芽は何を見てきたのかを書いた感じです。
+      </div>
+    </section>
 
-</script>
+    <section class="content">
+      <div class="title">相楽寿々花の空模様</div>
+      <div class="tag">#tjnmk #パロディ</div>
+      <div class="cover">
+        <img src="images/souraku.jpg">
+      </div>
+      <div class="link">
+        <a class="buy" href="https://www.melonbooks.co.jp/detail/detail.php?product_id=535654">銀盤時計@メロンブックス</a>
+      </div>
+      <div class="etc">
+        C97発行。学長ズが姉妹で親衛隊が従姉妹のパロディ世界線。入院している妹――結芽につきっきりで家に居ない母と、ひとりぼっちで過ごす寿々花の話です。
+      </div>
+    </section>
+    <section class="content">
+      <div class="title">Not Found</div>
+      <div class="tag">#tjnmk #すずまき #IF</div>
+      <div class="cover">
+        <img src="images/tjnmk-notfound.jpg">
+      </div>
+      <div class="link">
+        <a class="buy" href="https://www.melonbooks.co.jp/detail/detail.php?product_id=535656">銀盤時計@メロンブックス</a>
+      </div>
+      <div class="etc">
+        C97発行。すず+まきがもし前向きになれないまま未来に進んでしまったらのIFルート。pixiv再録と書き下ろしがいくつか。概ねハッピーエンドです。現地限定のアナザー版が存在します。
+      </div>
+    </section>
+    <section class="content">
+      <div class="title">キラメキ華片</div>
+      <div class="tag">#tjnmk #親衛隊 #合同誌</div>
+      <div class="cover">
+        <img src="images/toji-goudou2.jpg">
+      </div>
+      <div class="link">
+        <a class="buy" href="https://www.melonbooks.co.jp/detail/detail.php?product_id=521694">銀盤時計@メロンブックス</a>
+      </div>
+      <div class="etc">
+        C97発行。刀使ノ巫女、折神家親衛隊の合同誌です。頑張って編集してたんですけど「君何ページ？？？」と原稿に語りかける事案が発生してました。イラスト10人、漫画8人、小説9人でお送りしました。原稿落としたやつとかいたってマジ？まじです。クリアファイル付きまだ売ってます。
+      </div>
+    </section>
+    <section class="content">
+      <div class="title">Hortus Felicitatum</div>
+      <div class="tag">#tjnmk #まいさや #合同誌</div>
+      <div class="cover">
+        <img src="images/toji-maisaya.jpg">
+      </div>
+      <div class="link">
+        <a class="buy" href="https://booth.pm/ja/items/1750878">Magna Graecia様@BOOTH</a>
+      </div>
+      <div class="etc">
+        けい様主宰のC97発行のまいさや合同誌に寄稿しました。私の本を全て持っている友人が「君のメインカップリングじゃないのを知っていて言うけれどこれが最高だと思う」と寄稿した話を褒められていて複雑です。
+      </div>
+    </section>
+    <section class="content">
+      <div class="title">高嶺の華達</div>
+      <div class="tag">#tjnmk #親衛隊 #合同誌</div>
+      <div class="cover">
+        <img src="images/toji-goudou1.jpg">
+      </div>
+      <div class="link">
+        <a class="buy" href="https://www.melonbooks.co.jp/detail/detail.php?product_id=476740">銀盤時計@メロンブックス</a>
+      </div>
+      <div class="etc">
+        2019年3月3日、刀使ノ巫女オンリーイベントで発行。初めて列整理が必要なサークルになってめちゃくちゃ慌てました。在庫まだ十分です。
+      </div>
+    </section>
+    <section class="content">
+      <div class="title">夢からさめたら</div>
+      <div class="tag">#tjnmk #此花寿々花中心</div>
+      <div class="cover">
+        <img src="images/toji-yumekara.jpg">
+      </div>
+      <div class="link reopen">
+        <a class="reopen" href="https://www.pixiv.net/novel/show.php?id=11185505">再録@pixiv</a>
+      </div>
+      <div class="etc">
+        2019年3月3日、刀使ノ巫女オンリーイベントで発行。初めての合同誌だった。みんなアンソロ目当てで買いに来てるもんだと思ってたので「新刊全部下さい！」って言われたときはうれしさと困惑に襲われました。再録してます。
+      </div>
+    </section>
+    <section class="content">
+      <div class="title">夢うつつでティータイム</div>
+      <div class="tag">#tjnmk #燕結芽中心 #クロスオーバー #にっかり青江</div>
+      <div class="cover">
+        <img src="images/toji-yumeututu.jpg">
+      </div>
+      <div class="link">
+        <a class="reopen" href="https://www.pixiv.net/novel/show.php?id=10888614">再録@pixiv</a>
+      </div>
+      <div class="etc">
+        2018年8月くらいにローカル即売会にて発行。その後オンリーイベントまでちまちま通販したり売ったりしてC98で完売しました。刀剣乱舞の世界では「にっかり青江」だけれど、刀使巫女の世界では「ニッカリ青江」だったので、名乗りに関してはきちんと拘っています。
+      </div>
+    </section>
+    <section class="content">
+      <div class="title">あなたにはかなわない</div>
+      <div class="tag">#tjnmk #すずまき #短編集</div>
+      <div class="cover">
+        <img src="images/toji-anataniha.jpg">
+      </div>
+      <div class="link soldout">
+        売り切れご免
+      </div>
+      <div class="etc">
+        2018年7月くらいにローカル即売会にて発行。その後オンリーイベントまでちまちま通販したり売ったりしてC98で完売しました。
+      </div>
+    </section>
+  </div>
+</body>
 </html>
