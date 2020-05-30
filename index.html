@@ -38,16 +38,19 @@
       background-position: top center;
       height: 100vh;
       display: block;
+      z-index: 1;
     }
     section#directions {
-      width: 30vw;
+      position: relative;
+      top: 15rem;
+      max-width: 30vw;
       min-width: 18rem;
-      margin: -60vh auto 3rem;
+      margin: 0 auto;
       min-height: 10rem;
-      max-height: 40vh;
+      max-height: 18rem;
       overflow-y: scroll;
       background: rgba(255, 255, 255, 80%);
-      display: block;
+      /*display: block;*/
     }
     section#directions h1 {
       font-family: "custom-senobi", sans-serif;
@@ -66,6 +69,7 @@
       position: fixed;
       display: block;
       bottom: 0;
+      margin-top: 1rem;
       text-align: center;
       width: 100%;
       font-family: "custom-senobi", sans-serif;
@@ -84,65 +88,65 @@
     <span class="header-small">(ロジラボ≒Logic Lab)</span>
   </header>
   <section id="contents">
-  </section>
-  <section id="directions">
-    <h1 @click="toggle('aboutme')">
-      <span v-if="show['aboutme']">▲</span>
-      <span v-if="!show['aboutme']">▼</span>
-      About me
-    </h1>
-    <div v-show="show['aboutme']" class="direction">
-      プログラマ。フットワークは軽い方。<br>
-      猫と暮らしています。<br>
-      島根県出身、鳥取県在住。<br>
-      インターネット上のIDは主に@sakahukamaki。<br>
-      2014年末からRailsを用いた開発の仕事をしています。<br>
-      猫を飼っています。<br>
-      業務上詳しいことについては<a href="https://savanna.io/@sakahukamaki" target="_blank">savannna.io</a>もしくは直接ご連絡ください。
-    </div>
-    <h1 @click="toggle('works')">
-      <span v-if="show['works']">▲</span>
-      <span v-if="!show['works']">▼</span>
-      Works
-    </h1>
-    <div v-show="show['works']" class="direction">
-      趣味で作ったもの
-      <ul>
-        <li><a href="https://sakahukamaki.github.io/cattower/tools/a3-linkskills.html" target="_blank">A3!リンクスキルチェッカー</a></li>
-        <li><a href="https://origamike.web.fc2.com/" target="_blank">アンソロジー企画サイト</a>（スタジオ五組オリジナルアニメ「刀使ノ巫女」より）</li>
-        <li><a href="https://dzsgnovel.web.fc2.com/" target="_blank">アンソロジー企画サイト</a>（ゲーム「文豪とアルケミスト」より）</li>
-      </ul>
-      <hr>
-      過去のお仕事履歴
-      <ul>
-        <li>`rails new .` からの開発環境整備</li>
-        <li>Rails3.0/Ruby1.8からRails6系/Ruby2.6へのアップデート</li>
-        <li>その他2.0->2.2などのこの範囲に収まるアップデート作業</li>
-        <li>Vagrant, Itamaeなどを用いた開発環境整備</li>
-        <li>社内向けテスト環境整備</li>
-        <li>新人研修（レビューア、メンター）</li>
-        <li>コードレビュー</li>
-        <li>診断結果管理システム（開発）</li>
-        <li>テナント管理システム（開発・追加実装）</li>
-        <li>応対記録システム（詳細設計～保守）</li>
-        <li>料金計算システム</li>
-        <li>決済API開発</li>
-      </ul>
-    </div>
-    <h1 @click="toggle('sns')">
-      <span v-if="show['sns']">▲</span>
-      <span v-if="!show['sns']">▼</span>
-      SNS
-    </h1>
-    <div v-show="show['sns']" class="direction">
-      <ul>
-        <li>Gmail: <a href="mailto:sakahukamaki@gmail.com" target="_blank">sakahukamaki</a></li>
-        <li>twitter: <a href="https://twitter.com/sakahukamaki" target="_blank">@sakahukamaki</a></li>
-        <li>GitHub: <a href="https://github.com/sakahukamaki" target="_blank">@sakahukamaki</a></li>
-        <li>savanna.io: <a href="https://savanna.io/@sakahukamaki" target="_blank">@sakahukamaki</a></li>
-        <li>Facebook: <a href="https://www.facebook.com/sakahukamaki" target="_blank">Asuka Ohtani</a></li>
-      </ul>
-    </div>
+    <section id="directions">
+      <h1 @click="toggle('aboutme')">
+        <span v-if="show['aboutme']">▲</span>
+        <span v-if="!show['aboutme']">▼</span>
+        About me
+      </h1>
+      <div v-show="show['aboutme']" class="direction">
+        プログラマ。フットワークは軽い方。<br>
+        猫と暮らしています。<br>
+        島根県出身、鳥取県在住。<br>
+        インターネット上のIDは主に@sakahukamaki。<br>
+        2014年末からRailsを用いた開発の仕事をしています。<br>
+        猫を飼っています。<br>
+        業務上詳しいことについては<a href="https://savanna.io/@sakahukamaki" target="_blank">savannna.io</a>もしくは直接ご連絡ください。
+      </div>
+      <h1 @click="toggle('works')">
+        <span v-if="show['works']">▲</span>
+        <span v-if="!show['works']">▼</span>
+        Works
+      </h1>
+      <div v-show="show['works']" class="direction">
+        趣味で作ったもの
+        <ul>
+          <li><a href="https://sakahukamaki.github.io/cattower/tools/a3-linkskills.html" target="_blank">A3!リンクスキルチェッカー</a></li>
+          <li><a href="https://origamike.web.fc2.com/" target="_blank">アンソロジー企画サイト</a>（スタジオ五組オリジナルアニメ「刀使ノ巫女」より）</li>
+          <li><a href="https://dzsgnovel.web.fc2.com/" target="_blank">アンソロジー企画サイト</a>（ゲーム「文豪とアルケミスト」より）</li>
+        </ul>
+        <hr>
+        過去のお仕事履歴
+        <ul>
+          <li>`rails new .` からの開発環境整備</li>
+          <li>Rails3.0/Ruby1.8からRails6系/Ruby2.6へのアップデート</li>
+          <li>その他2.0->2.2などのこの範囲に収まるアップデート作業</li>
+          <li>Vagrant, Itamaeなどを用いた開発環境整備</li>
+          <li>社内向けテスト環境整備</li>
+          <li>新人研修（レビューア、メンター）</li>
+          <li>コードレビュー</li>
+          <li>診断結果管理システム（開発）</li>
+          <li>テナント管理システム（開発・追加実装）</li>
+          <li>応対記録システム（詳細設計～保守）</li>
+          <li>料金計算システム</li>
+          <li>決済API開発</li>
+        </ul>
+      </div>
+      <h1 @click="toggle('sns')">
+        <span v-if="show['sns']">▲</span>
+        <span v-if="!show['sns']">▼</span>
+        SNS
+      </h1>
+      <div v-show="show['sns']" class="direction">
+        <ul>
+          <li>Gmail: <a href="mailto:sakahukamaki@gmail.com" target="_blank">sakahukamaki</a></li>
+          <li>twitter: <a href="https://twitter.com/sakahukamaki" target="_blank">@sakahukamaki</a></li>
+          <li>GitHub: <a href="https://github.com/sakahukamaki" target="_blank">@sakahukamaki</a></li>
+          <li>savanna.io: <a href="https://savanna.io/@sakahukamaki" target="_blank">@sakahukamaki</a></li>
+          <li>Facebook: <a href="https://www.facebook.com/sakahukamaki" target="_blank">Asuka Ohtani</a></li>
+        </ul>
+      </div>
+    </section>
   </section>
   <footer>
     Illustration by frend(thx!!!)
