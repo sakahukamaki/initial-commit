@@ -1,0 +1,71 @@
+@font-face {
+  font-family: 'custom-senobi';
+  src: url('fonts/custom-senobi.eot') format('eot'), url('fonts/custom-senobi.woff') format('woff');
+}
+a {
+  text-decoration: underline;
+  color: black;
+}
+a:hover, a:visited {
+  color: transparent;
+}
+body {
+  font-family: 'Kosugi Maru', sans-serif;
+}
+header {
+  top: 0;
+  display: block;
+  width: 100%;
+  margin: 0.5rem auto;
+  font-family: "custom-senobi", sans-serif;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  text-align: center;
+}
+header .header-small {
+  font-size: 1rem;
+}
+section#contents {
+  background: url("images/bg.jpg") no-repeat;
+  background-position: top center;
+  height: 100vh;
+  display: block;
+}
+section#directions {
+  position: relative;
+  top: 15rem;
+  margin: 0 auto;
+  max-width: 25vw;
+  min-width: 18rem;
+  min-height: 10rem;
+  max-height: 18rem;
+  overflow-y: scroll;
+  background: rgba(255, 255, 255, 80%);
+}
+section#directions h1 {
+  font-family: "custom-senobi", sans-serif;
+  background: linear-gradient(transparent 0%, #42424269 0%);
+  margin: .5rem;
+}
+section#directions div.direction {
+  padding: .5rem 1rem;
+  font-size: 16px;
+  line-height: 20px;
+}
+section#directions ul {
+  margin: 0;
+}
+footer {
+  position: fixed;
+  display: block;
+  bottom: 0;
+  margin-top: 1rem;
+  width: 100%;
+  font-family: "custom-senobi", sans-serif;
+  text-align: center;
+}
+@media screen and (max-width: 500px) {
+body {
+  background-size: contain;
+  background-position: center center;
+}
