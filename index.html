@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>路地ラボ  |  logic-lab</title>
+  <title>路地ラボ  |  logic-labo</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="assets/style.css">
-  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
   <meta property="og:title" content="路地ラボ　(ロジラボ≒Logic Labo)" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://sakahukamaki.github.io/portfolio/" />
@@ -41,18 +41,11 @@
         Works
       </h1>
       <div v-show="show['works']" class="direction">
-        趣味で作ったもの
-        <ul>
-          <li><a href="https://sakahukamaki.github.io/cattower/tools/a3-linkskills.html" target="_blank">A3!リンクスキルチェッカー</a></li>
-          <li><a href="https://origamike.web.fc2.com/" target="_blank">アンソロジー企画サイト</a>（スタジオ五組オリジナルアニメ「刀使ノ巫女」より）</li>
-          <li><a href="https://dzsgnovel.web.fc2.com/" target="_blank">アンソロジー企画サイト</a>（ゲーム「文豪とアルケミスト」より）</li>
-        </ul>
-        <hr>
-        過去のお仕事履歴
+        お仕事履歴
         <ul>
           <li>`rails new .` からの開発環境整備</li>
           <li>Rails3.0/Ruby1.8からRails6系/Ruby2.6へのアップデート</li>
-          <li>その他2.0->2.2などのこの範囲に収まるアップデート作業</li>
+          <li>その他2.0->2.2などのこの範囲に収まるアップデート</li>
           <li>Vagrant, Itamaeなどを用いた開発環境整備</li>
           <li>社内向けテスト環境整備</li>
           <li>新人研修（レビューア、メンター）</li>
@@ -62,7 +55,32 @@
           <li>応対記録システム（詳細設計～保守）</li>
           <li>料金計算システム</li>
           <li>決済API開発</li>
+          <li>Rails5.0から6.1へのアップデート</li>
         </ul>
+      </div>
+      <h1 @click="toggle('pastime')">
+        <span v-if="show['pastime']">▲</span>
+        <span v-if="!show['pastime']">▼</span>
+        Pastime
+      </h1>
+      <div v-show="show['pastime']" class="direction">
+        趣味で作ったもの
+        <ul>
+          <li><a href="https://sakahukamaki.github.io/cattower/tools/a3-linkskills.html" target="_blank">A3!リンクスキルチェッカー</a></li>
+          <li><a href="https://origamike.web.fc2.com/" target="_blank">アンソロジー企画サイト</a>（スタジオ五組オリジナルアニメ「刀使ノ巫女」より）</li>
+          <li><a href="https://dzsgnovel.web.fc2.com/" target="_blank">アンソロジー企画サイト</a>（ゲーム「文豪とアルケミスト」より）</li>
+        </ul>
+      </div>
+      <h1 @click="toggle('qa')">
+        <span v-if="show['qa']">▲</span>
+        <span v-if="!show['qa']">▼</span>
+        Q&A
+      </h1>
+      <div v-show="show['qa']" class="direction">
+        Q. どうしてRailsのリポジトリがpublicにないの？<br>
+        A. プライベートでコードを書いてません。指標の一つとしてRubyのGoldって資格を提出できます。<br>
+        Q. なんのために働いているの？<br>
+        A. うちの猫を幸せにするために働いています<br>
       </div>
       <h1 @click="toggle('sns')">
         <span v-if="show['sns']">▲</span>
